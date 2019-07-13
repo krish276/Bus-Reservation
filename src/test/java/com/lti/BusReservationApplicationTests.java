@@ -11,6 +11,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.lti.dao.DaoInterface;
 import com.lti.dao.GenericDao;
 import com.lti.entity.TransportCompany;
 
@@ -21,14 +22,21 @@ import com.lti.entity.TransportCompany;
 public class BusReservationApplicationTests {
 
 	 @Autowired 
-	 GenericDao dao;
+	 DaoInterface dao;
 	 
 	@Test
-	public void add() {
+	public void addTranportCompanyTest() {
 	
 		TransportCompany company = new TransportCompany();
 		company.setCompanyName("SRM");
-		dao.add(company);
+		dao.insert(company);
+	}
+	
+	@Test
+	public void fetchAllTransportCompanyTest() {
+	
+		for(TransportCompany tc: dao.fetchAll(TransportCompany.class))
+			System.out.println(tc);
 	}
 
 }

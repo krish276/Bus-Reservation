@@ -15,6 +15,11 @@ public class TransportCompany {
 	@GeneratedValue
 	private int companyID;
 	
+	@Override
+	public String toString() {
+		return "TransportCompany [companyID=" + companyID + ", companyName=" + companyName + "]";
+	}
+
 	@Column(name="COMPANY_NAME")
 	private String companyName;
 
