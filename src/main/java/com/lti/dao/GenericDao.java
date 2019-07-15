@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,8 @@ public class GenericDao implements DaoInterface{
 
 	@Override
 	public <E> List<E> fetchAll(Class<E> classname) {
-		
-		return (List<E>) em.createQuery("select E from TransportCompany E");
+		Query q= em.createQuery("select o from "+ classname.getName()+" o");
+		List <E> list=q.getResultList();
+		return list;
 	}
 }

@@ -24,10 +24,13 @@ public class Customer {
 	private String gender;
 	@Column(name="DATE_OF_BIRTH")
 	private String dob;
-	@Column(name="phone_no")
+	
+	@Column(name="phone_no",unique=true)
 	private double phone_no;
-	@Column(name="email")
+	
+	@Column(name="email", unique=true)
 	private String email;
+	
 	@Column(name="password")
 	private String password;
 	public int getCustomer_id() {
