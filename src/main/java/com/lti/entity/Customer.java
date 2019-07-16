@@ -14,24 +14,24 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue
-	@Column(name="customer_id")
+	@Column(name="CUSTOMER_ID")
 	private int customer_id;
-	@Column(name="first_name")
+	@Column(name="FIRST_NAME")
 	private String first_name;
-	@Column(name="last_name")
+	@Column(name="LAST_NAME")
 	private String last_name;
-	@Column(name="gender")
+	@Column(name="GENDER")
 	private String gender;
 	@Column(name="DATE_OF_BIRTH")
 	private String dob;
 	
-	@Column(name="phone_no",unique=true)
+	@Column(name="PHONE_NO",unique=true)
 	private double phone_no;
 	
-	@Column(name="email", unique=true)
+	@Column(name="EMAIL", unique=true)
 	private String email;
 	
-	@Column(name="password")
+	@Column(name="PASSWORD")
 	private String password;
 	public int getCustomer_id() {
 		return customer_id;

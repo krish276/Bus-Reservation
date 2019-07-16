@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.lti.entity.Customer;
 
 @Repository
-public class CustomerDao extends GenericDao{
+public class CustomerDao {
 	
 	@PersistenceContext
 	EntityManager em;
@@ -23,9 +23,13 @@ public class CustomerDao extends GenericDao{
 	public Customer fetchByCustomerEmail(String email) {
 		return (Customer) em.createQuery("select c from Customer c where c.email = :email").setParameter("email",email).getSingleResult();
 	}
+	public Customer fetchByCustomerPhone_No(double phone_No) {
+		return (Customer) em.createQuery("select c from Customer c where c.phone_No = :phone_No").setParameter("phone_No",phone_No).getSingleResult();
+	} 
 	public void addCustomer(Customer c) {
-		GenericDao gd = new GenericDao();
-		gd.insert(c);
+		System.out.println(c.getEmail());
+		em.merge(c);
+		
 	}
 	
 }

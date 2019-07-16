@@ -14,9 +14,9 @@ password: $("#password").val(),
 }
 
 
-var url = '/login';
+//var url = '/login';
 $.ajax({
-    url : url, //the url we want to hit
+    url : '/login', //the url we want to hit
     method : 'POST',//get or post any other method of http
     data : JSON.stringify(obj),//What we want to send to the server
     contentType : 'application/json',

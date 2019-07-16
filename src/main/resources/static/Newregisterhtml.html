@@ -11,19 +11,19 @@
         }
 else{
 var obj={
-firstname: $("#fname").val(),
-lastname: $("#lname").val(),
+first_name: $("#fname").val(),
+last_name: $("#lname").val(),
 gender:$("#gender").val(),
-dateofbirth:$("date").val(),
-emailid: $("#email").val(),
-phonenumber:$("#number").val(),
+dob:$("date").val(),
+phone_no:$("#number").val(),
+email: $("#email").val(),
 password:$("#password").val()
 }
 
 
-var url = '/register';
+//var url ='/register';
 $.ajax({
-    url : url, //the url we want to hit
+    url : '/register', //the url we want to hit
     method : 'POST',//get or post any other method of http
     data : JSON.stringify(obj),//What we want to send to the server
     contentType : 'application/json',
@@ -58,7 +58,7 @@ $.ajax({
     <form id="register">
      <center><b>REGISTER</b></center><br/>
       Enter FistName:<input type="text" pattern="[A-Za-z]+" placeholder="fname" id="fname" required/><br/><br/>
-      <p id="p1"></p> 
+       
       Enter LastName:<input type="text" placeholder="lname" id="lname"  pattern="[A-Za-z]+" required/><br/><br/>
       Enter Gender:<input type="radio" id="gender" value="male" checked>Male
   		   <input type="radio" id="gender" value="female">Female
