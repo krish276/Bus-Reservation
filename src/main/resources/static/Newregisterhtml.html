@@ -13,10 +13,11 @@ else{
 var obj={
 firstname: $("#fname").val(),
 lastname: $("#lname").val(),
+gender:$("#gender").val(),
+dateofbirth:$("date").val(),
 emailid: $("#email").val(),
-contactnumber:$("#number").val(),
-password:$("#password").val(),
-confirmpassword:$("#confirmpassword").val()
+phonenumber:$("#number").val(),
+password:$("#password").val()
 }
 
 
@@ -59,12 +60,17 @@ $.ajax({
       Enter FistName:<input type="text" pattern="[A-Za-z]+" placeholder="fname" id="fname" required/><br/><br/>
       <p id="p1"></p> 
       Enter LastName:<input type="text" placeholder="lname" id="lname"  pattern="[A-Za-z]+" required/><br/><br/>
-      Enter Gender:<input type="radio" name="gender" value="male" checked>Male
-  		   <input type="radio" name="gender" value="female">Female
-  		   <input type="radio" name="gender" value="other">Other<br><br>
+      Enter Gender:<input type="radio" id="gender" value="male" checked>Male
+  		   <input type="radio" id="gender" value="female">Female
+  		   <input type="radio" id="gender" value="other">Other<br><br>
 
-      Enter EmailAddress:<input type="email" placeholder="@gmail.com" id="email" required/><br/><br/>
+     Enter Date Of Birth: <div align="center" class="form-row show-inputbtns">
+        <input id="date"type="date" data-date-inline-picker="false" data-date-popover='{
+	"inline": true
+}' /><br><br>
+      
       Enter ContactNumber:<input type="text" placeholder="mobile number" id="number" pattern = "[0-9]+" maxlength="10" required/><br/><br/>
+       Enter EmailAddress:<input type="email" placeholder="@gmail.com" id="email" required/><br/><br/>
       Enter Password<input type="password" placeholder="password" id="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" reqiured/><br/><br/>
       Confirm Password:<input type="password" placeholder="renter password" id="confirmpassword" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"required/><br/><br/>
      
