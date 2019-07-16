@@ -27,9 +27,8 @@ public class CustomerDao {
 		return (Customer) em.createQuery("select c from Customer c where c.phone_No = :phone_No").setParameter("phone_No",phone_No).getSingleResult();
 	} 
 	public void addCustomer(Customer c) {
-		System.out.println(c.getEmail());
-		em.merge(c);
-		
-	}
+			GenericDao gd = new GenericDao();
+			gd.insertToDatabase(c);
+		}
 	
 }
