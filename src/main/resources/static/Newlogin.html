@@ -9,7 +9,7 @@ $("#login").submit(function(evt){
 evt.preventDefault();
 var obj={
 email: $("#email").val(),
-password: $("#password").val(),
+password: $("#password").val()
 
 }
 
@@ -22,7 +22,6 @@ $.ajax({
     contentType : 'application/json',
     success : function(response) {
     alert(JSON.stringify(response));
-    
     }
    })
 })
@@ -49,7 +48,7 @@ $.ajax({
 <center><b>LOGIN</b> </center><br/>
 ENTER EMAIL:  <input type="email" placeholder="email" id="email" required/><br/><br/>
 ENTER PASSWORD:  <input type="password" placeholder="password" id="password" required/><br/><br/>
- <input  class="button" type="button" onclick="window.location.href = 'search.html';" value="LOGIN"/><br/><br/>
+ <input  class="button" type="submit"  value="LOGIN"/><br/><br/>
  <p class="message">Not registered? <a href="Newregisterhtml.html">Create an account</a></p><br/>
       <span class="psw">Forgot <a href="reset.html">password?</a></span>
 </form>
