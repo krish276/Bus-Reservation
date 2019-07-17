@@ -17,14 +17,21 @@ public class GenericDao implements DaoInterface{
 	
 	@Override
 	@Transactional
-	public <E> void insert(E obj) {
+	public <E> void insertToDatabase(E obj) {
 		em.merge(obj);
 	}
 
 	@Override
-	public <E> List<E> fetchAll(Class<E> classname) {
+	public <E> List<E> fetchAllFromDatabase(Class<E> classname) {
 		Query q= em.createQuery("select o from "+ classname.getName()+" o");
 		List <E> list=q.getResultList();
 		return list;
+	}
+	
+	@Override
+	public <E>  E  fetchByIdfromDatabase(Class <E> c,Object Id) {
+		E obj= em.find(c, Id);
+		return obj;
+		
 	}
 }

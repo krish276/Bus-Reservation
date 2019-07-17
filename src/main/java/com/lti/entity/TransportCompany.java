@@ -20,7 +20,7 @@ public class TransportCompany {
 		return "TransportCompany [companyID=" + companyID + ", companyName=" + companyName + "]";
 	}
 
-	@Column(name="COMPANY_NAME")
+	@Column(name="COMPANY_NAME", unique = true)
 	private String companyName;
 
 	public int getCompanyID() {

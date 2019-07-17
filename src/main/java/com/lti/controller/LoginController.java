@@ -10,17 +10,17 @@ import com.lti.service.LoginService;
 
 @RestController
 public class LoginController {
-
-	@Autowired
-	private LoginService ls;
 	
-	@RequestMapping(path="/login", method = RequestMethod.POST)
-	public String onRecieve(@RequestParam("email") String email,@RequestParam("password") String password) {
-		boolean isValid=ls.validateUser(email, password);
-		if(isValid==(true))
-		{
-			return "index.html";
-		}
-		return "login.html";
-	}
+	
+	  @Autowired private LoginService ls;
+	  
+	  @RequestMapping(path="/login", method = RequestMethod.POST)
+	  public String onRecieve(@RequestParam("email") String email,@RequestParam("password") String password) { 
+		  boolean isValid=ls.validateUser(email, password);
+	  if(isValid==(true))
+	  { return "index.html"; 
+	  }
+	  return "login.html"; 
+	  }
+	 
 }
