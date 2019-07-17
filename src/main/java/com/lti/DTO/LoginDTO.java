@@ -2,6 +2,7 @@ package com.lti.DTO;
 
 public class LoginDTO {
 
+	private int customerId;
 	private String email;
 	private String password;
 	public String getEmail() {

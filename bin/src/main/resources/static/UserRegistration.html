@@ -12,11 +12,11 @@
         }
 else{
 var obj={
-firstName: $("#fname").val(),
-lastName: $("#lname").val(),
+first_name: $("#fname").val(),
+last_name: $("#lname").val(),
 gender:$("#gender").val(),
-dateOfBirth:$("date").val(),
-phoneNo:$("#number").val(),
+dob:$("date").val(),
+phone_no:$("#number").val(),
 email: $("#email").val(),
 password:$("#password").val()
 }
@@ -29,7 +29,8 @@ $.ajax({
     data : JSON.stringify(obj),//What we want to send to the server
     contentType : 'application/json',
     success : function(response) {
-       window.location.replace("Index.html");
+    alert(JSON.stringify(response));
+    
     }
    })
 }
@@ -47,9 +48,9 @@ $.ajax({
 </nav>
 </div>
 <nav>
-<a href="Index.html">Home</a>
-<a href="Login.html">Sign In</a>
-<a href="UserRegistration.html">Sign Up</a>
+<a href="index.html">Home</a>
+<a href="Newlogin.html">Sign In</a>
+<a href="Newregisterhtml.html">Sign Up</a>
 <a href="">About Us</a>
 </nav>
 </div>
@@ -93,19 +94,19 @@ $.ajax({
 <div class="input-grp-container">
         <div class="input-grp">
       <label>Enter EmailAddress </label>
-       <input type="email" class="form-control" placeholder="example@noaddress.com" id="email" required/>
+       <input type="email" class="form-control" placeholder="@gmail.com" id="email" required/>
  </div>
       </div>
 <div class="input-grp-container">
         <div class="input-grp">
      <label> Enter Password</label>
-     <input type="password" class="form-control" placeholder="password" value="Qwertyuiop@1" id="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" reqiured/>
+     <input type="password" class="form-control" placeholder="password" id="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" reqiured/>
  </div>
       </div>
 <div class="input-grp-container">
         <div class="input-grp">     
  <label>Confirm Password</label>
-       <input type="password" class="form-control" value="Qwertyuiop@1" placeholder=" Re-Enter password" id="confirmpassword" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"required/>
+       <input type="password" class="form-control" placeholder="renter password" id="confirmpassword" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"required/>
    </div>
       </div> 
 <div class="input-grp input-submit"> 

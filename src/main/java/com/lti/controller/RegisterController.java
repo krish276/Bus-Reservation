@@ -23,10 +23,10 @@ public class RegisterController {
 	
 	@RequestMapping("/register")
 	public  void register(@RequestBody Customer customer) {
-	 
+	
+		service.addCustomer(customer);
 		System.out.println("CUSTOMER REGISTERED");
 		System.out.println(customer.getEmail());
-		service.addCustomer(customer);
 	}
 
 }

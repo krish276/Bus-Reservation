@@ -11,7 +11,7 @@
 		$("#search").submit(
 				function(evt) {
 					evt.preventDefault();
-					
+
 					var source = $("#source").val();
 					var destination = $("#destination").val();
 					var journeyDate = $("#date").val();
@@ -48,16 +48,6 @@
 				})
 	})
 </script>
-<script >
-if(sessionStorage){
-$(function(){
-	if(sessionStorage)
-	 	 {
-		document.querySelector('#testt').innerHTML = sessionStorage.getItem("firstName");
-		}
-})	
-}	
-</script>
 
 </head>
 <body>
@@ -72,9 +62,8 @@ $(function(){
 		</div>
 		<nav>
 			<a href="Index.html">Home</a> 
-			<a href="">About Us</a> 
-			<a	href="UserRegistration.html">Sign Up</a> 
-			<a href="Login.html">Sign In</a>
+			<a href="Login.html">Sign In</a> <a
+				href="UserRegistration.html">Sign Up</a> <a href="">About Us</a>
 		</nav>
 	</div>
 
@@ -82,9 +71,9 @@ $(function(){
 		<div class="booking-form">
 			<form id="search">
 				<br /> <label id="ss">SEARCH FOR BUS TICKETS</label><br /> <label>SOURCE</label>
-				<input style="text-transform: uppercase;" type="text" class="form-control" name="src" id="source"
+				<input type="text" class="form-control" name="src" id="source"
 					placeholder="FROM" pattern="[A-Z]+" required /> <label>DESTINATION</label>
-				<input style="text-transform: uppercase;" type="text" class="form-control" name="dest" id="destination"
+				<input type="text" class="form-control" name="dest" id="destination"
 					placeholder="TO" pattern="[A-Z]+" required /> <label>DATE</label> <input
 					id="date" type="date" class="form-control select-date">
 

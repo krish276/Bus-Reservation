@@ -14,8 +14,8 @@
 				password : $("#password").val()
 
 			}
-// 			var email = $("#email").val();
-// 			var password = $("#password").val();
+			var email = $("#email").val();
+			var password = $("#password").val();
 			var url = '/login';
 			$.ajax({
 				url : url, 
@@ -24,11 +24,11 @@
 				contentType : 'application/json',
 				success : function(response) {
 					var email = response.email;
+					//sessionStorage['response'] = response;
+					sessionStorage['response'] = JSON.stringify(response);
 					if (response.customerId==-1)
 						alert("Wrong password !!");
 					else{
-						sessionStorage.setItem("customerId",response.customerId);
-						sessionStorage.setItem("firstName",response.firstName);
 						window.location.replace("Index.html");
 					}
 						
