@@ -1,10 +1,14 @@
 package com.lti.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 
@@ -14,42 +18,47 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue
-	@Column(name="customer_id")
-	private int customer_id;
-	@Column(name="first_name")
-	private String first_name;
-	@Column(name="last_name")
-	private String last_name;
-	@Column(name="gender")
+	@Column(name="CUSTOMER_ID")
+	private int customerId;
+	@Column(name="FIRST_NAME")
+	private String firstName;
+	@Column(name="LAST_NAME")
+	private String lastName;
+	@Column(name="GENDER")
 	private String gender;
-	@Column(name="DATE_OF_BIRTH")
+	
+	@Transient
 	private String dob;
+
+	@Column(name="DATE_OF_BIRTH")
+	private Date dateOfBirth;
 	
-	@Column(name="phone_no",unique=true)
-	private double phone_no;
+	@Column(name="PHONE_NO",unique=true)
+	private double phoneNo;
 	
-	@Column(name="email", unique=true)
+	@Column(name="EMAIL", unique=true)
 	private String email;
 	
-	@Column(name="password")
+	@Column(name="PASSWORD")
 	private String password;
-	public int getCustomer_id() {
-		return customer_id;
+	
+	public int getCustomerId() {
+		return customerId;
 	}
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getGender() {
 		return gender;
@@ -57,17 +66,26 @@ public class Customer {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getDob() {
-		return dob;
+	
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
+	
+	
 	public void setDob(String dob) {
 		this.dob = dob;
+		try {
+			this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
+		}
+		catch (Exception e) {
+			//ignoring the catch block assuming we will be validating the date input before submission
+		}
 	}
-	public double getPhone_no() {
-		return phone_no;
+	public double getPhoneNo() {
+		return phoneNo;
 	}
-	public void setPhone_no(double phone_no) {
-		this.phone_no = phone_no;
+	public void setPhoneNo(double phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 	public String getEmail() {
 		return email;

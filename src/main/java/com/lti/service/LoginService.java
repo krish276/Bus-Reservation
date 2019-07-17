@@ -1,28 +1,35 @@
 package com.lti.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.lti.DTO.CustomerDTO;
+import com.lti.DTO.LoginDTO;
 import com.lti.dao.CustomerDao;
-import com.lti.dao.DaoInterface;
-import com.lti.dao.GenericDao;
+import com.lti.dao.LoginDao;
 import com.lti.entity.Customer;
 
 @Service
 public class LoginService {
 
 	@Autowired
-	private CustomerDao customerDao;
+	private LoginDao loginDao;
 	
-	public boolean validateUser(String email,String password) {
-		
-		Customer customer= customerDao.fetchByCustomerEmail(email);
-		if(customer.getPassword().equals(password)) {
-			//suceesfull login
-			return true;
+	public CustomerDTO showSearch(LoginDTO loginDetail){
+		CustomerDTO cust = null;
+		Customer customer = loginDao.fetchEmail(loginDetail.getEmail());
+		if(customer.getPassword().equals(loginDetail.getPassword())) {
+			 cust=new CustomerDTO(customer);
 		}
-		return false;
-		
+		else {
+			cust=new CustomerDTO();
+			cust.setCustomerId(-1);			
+		}
+		return cust;
+
+
 	}
+	
+		
+	
 }

@@ -14,15 +14,17 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.lti.DTO.BusResultDTO;
+import com.lti.dao.BusSearchDao;
 import com.lti.dao.DaoInterface;
 import com.lti.dao.GenericDao;
 import com.lti.dao.TransportCompanyDao;
-import com.lti.dao.TripDetailsDao;
 import com.lti.entity.BusDetails;
 import com.lti.entity.RouteDetails;
 import com.lti.entity.TransportCompany;
 import com.lti.entity.TripDetails;
 import com.lti.entity.WeeklyFrequency;
+import com.lti.service.BusSearchService;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -37,7 +39,10 @@ public class BusReservationApplicationTests {
 	 private DaoInterface dao;
 	 
 	 @Autowired
-	 private TripDetailsDao tddao;
+	 private BusSearchDao tddao;
+	 
+	 @Autowired
+	 private BusSearchService bss;
 	 
 	@Test
 	public void addTranportCompanyTest() {
@@ -77,7 +82,8 @@ public class BusReservationApplicationTests {
 	@Test
 	public void searchTest() throws ParseException {
 		
-		tddao.busAvailabilitySearch("MUMBAI", "PUNE","10-JUL-2019");
+		for(BusResultDTO brd:bss.busSearch("MUMBAI", "PUNE","2019-07-10"))
+			System.out.println(brd);
 	}
 	
 	

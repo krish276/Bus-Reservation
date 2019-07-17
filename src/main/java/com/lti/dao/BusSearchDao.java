@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.lti.entity.TripDetails;
 
 @Repository
-public class TripDetailsDao {
+public class BusSearchDao {
 
 	@PersistenceContext
 	EntityManager em;
@@ -27,6 +27,7 @@ public class TripDetailsDao {
 		Query q=em.createQuery("select TD from TripDetails TD inner join TD.bus BD inner join TD.weeklyFrequency WF where "
 				+ "TD.route.routeId=(select RD.routeId from RouteDetails RD where RD.source=:src and RD.destination= :dest) "
 				+ "and :date between BD.startOfService and BD.endOfService  "
+				+ "and TD.seatsFree>0 "
 				+ "and TD.weeklyFrequency.freqId in"
 				+ "(select WFF.freqId from WeeklyFrequency WFF where WFF.wednesday is not null )");
 		q.setParameter("src",source);

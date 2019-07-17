@@ -1,26 +1,52 @@
 package com.lti.service;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lti.dao.TripDetailsDao;
+import com.lti.DTO.BusResultDTO;
+import com.lti.dao.BusSearchDao;
 import com.lti.entity.TripDetails;
 
 @Service
 public class BusSearchService {
 
 	@Autowired
-	private TripDetailsDao tripDao;
+	private BusSearchDao searchDao;
 	
-	public void busSearch(String source, String destination,String travelDate) {
+	public List<BusResultDTO> busSearch(String source, String destination,String unformattedTravelDate) throws ParseException {
+		
+		Date tempvar = new SimpleDateFormat("yyyy-MM-dd").parse(unformattedTravelDate);
+		String travelDate =new SimpleDateFormat("dd-MMM-yy").format(tempvar);
+		
+		List<TripDetails> busSearchResult =new ArrayList<TripDetails>();
 		try {
-			List<TripDetails> busSearchResult= tripDao.busAvailabilitySearch(source, destination, travelDate);
+			busSearchResult= searchDao.busAvailabilitySearch(source, destination, travelDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		List<BusResultDTO> resultListDTO =new ArrayList<BusResultDTO>();
+		
+		for(TripDetails td:busSearchResult) {
+			BusResultDTO resultDTO= new BusResultDTO();
+			resultDTO.setTripId(td.getTripId());
+			resultDTO.setTransportCompanyName(td.getBus().getTransportComapny().getCompanyName());
+			resultDTO.setBusType(td.getBus().getBusType());
+			resultDTO.setSeatsFree(td.getSeatsFree());
+			resultDTO.setDepartureTime(td.getDepartureTime());
+			resultDTO.setArrivalTime(td.getArrivalTime());
+			resultListDTO.add(resultDTO);
+			
+		}
+		
+		return resultListDTO;
+		
 	}
 	
 }
