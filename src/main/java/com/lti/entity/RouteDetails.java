@@ -28,11 +28,11 @@ public class RouteDetails {
 	
 	
 	@Column(name="DISTANCE")
-	private String distance;
+	private int distance;
 	
 	
 	@Column(name="DURATION")
-	private String duration;
+	private int duration;
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "route")
 	private List<TripDetails> tripDetails;
@@ -86,22 +86,22 @@ public class RouteDetails {
 	}
 
 
-	public String getDistance() {
+	public int getDistance() {
 		return distance;
 	}
 
 
-	public void setDistance(String distance) {
+	public void setDistance(int distance) {
 		this.distance = distance;
 	}
 
 
-	public String getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 
 
-	public void setDuration(String duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 

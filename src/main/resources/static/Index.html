@@ -25,23 +25,8 @@
 						method : 'GET',//get or post any other method of http
 						type : 'json',
 						success : function(response) {
-							alert(JSON.stringify(response));
-							
-							$.each(response, function(index, Bus) {
-								localStorage.setItem('myMainKey'+index,JSON.stringify(Bus));
-								window.location = '/retrivaltest.html';
-						/* 		var row = $("<tr/>");
-								var column1 = $("<td/>").text(Bus.transportCompanyName);
-								var column2 = $("<td/>").text(Bus.busType);
-								var column3 = $("<td/>").text(Bus.arrivalTime);
-								var column4 = $("<td/>").text(Bus.departureTime);
-								row.append(column1);
-								row.append(column2);
-								row.append(column3);
-								row.append(column4);
-								$('#tb').append(row); */
-
-							})
+							sessionStorage.setItem('BusList',JSON.stringify(response));
+							window.location = '/BusListDisplay.html';
 						}
 
 					})
@@ -53,7 +38,7 @@ if(sessionStorage){
 $(function(){
 	if(sessionStorage)
 	 	 {
-		document.querySelector('#testt').innerHTML = sessionStorage.getItem("firstName");
+			document.querySelector('#username').innerHTML = "WELCOME "+(sessionStorage.getItem("firstName").toUpperCase());
 		}
 })	
 }	
@@ -75,6 +60,7 @@ $(function(){
 			<a href="">About Us</a> 
 			<a	href="UserRegistration.html">Sign Up</a> 
 			<a href="Login.html">Sign In</a>
+			<h3 id="username" align="right"></h3>
 		</nav>
 	</div>
 

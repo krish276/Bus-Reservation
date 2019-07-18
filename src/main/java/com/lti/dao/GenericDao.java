@@ -17,8 +17,8 @@ public class GenericDao implements DaoInterface{
 	
 	@Override
 	@Transactional
-	public <E> void insertToDatabase(E obj) {
-		em.merge(obj);
+	public <E> E insertToDatabase(E obj) {
+		 return em.merge(obj);
 	}
 
 	@Override

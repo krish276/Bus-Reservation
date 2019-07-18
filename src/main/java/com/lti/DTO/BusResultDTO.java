@@ -12,7 +12,14 @@ public class BusResultDTO {
 	private int seatsFree;
 	private String busType;
 	private String transportCompanyName;
+	private int duration;
 	
+	public int getDuration() {
+		return duration;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
 	@Override
 	public String toString() {
 		return "BusResultDTO [tripId=" + tripId + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime

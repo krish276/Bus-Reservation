@@ -41,6 +41,7 @@ public class BusSearchService {
 			resultDTO.setSeatsFree(td.getSeatsFree());
 			resultDTO.setDepartureTime(td.getDepartureTime());
 			resultDTO.setArrivalTime(td.getArrivalTime());
+			resultDTO.setDuration(td.getRoute().getDuration());
 			resultListDTO.add(resultDTO);
 			
 		}
