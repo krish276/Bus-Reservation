@@ -22,7 +22,7 @@ public class BusDetails {
 	
 	@ManyToOne
 	@JoinColumn(name="COMPANY_ID")
-	private TransportCompany transportComapny;
+	private TransportCompany transportCompany;
 	
 	@Column(name="TOTAL_SEATS")
 	private int totalSeats;
@@ -39,7 +39,7 @@ public class BusDetails {
 	
 	@Override
 	public String toString() {
-		return "BusDetails [busId=" + busId + ", transportComapny=" + transportComapny + ", totalSeats=" + totalSeats
+		return "BusDetails [busId=" + busId + ", transportComapny=" + transportCompany + ", totalSeats=" + totalSeats
 				+ ", busType=" + busType + ", startOfService=" + startOfService + ", endOfService=" + endOfService
 				+ "]";
 	}
@@ -53,11 +53,11 @@ public class BusDetails {
 	}
 
 	public TransportCompany getTransportComapny() {
-		return transportComapny;
+		return transportCompany;
 	}
 
-	public void setTransportComapny(TransportCompany transportComapny) {
-		this.transportComapny = transportComapny;
+	public void setTransportCompany(TransportCompany transportCompany) {
+		this.transportCompany = transportCompany;
 	}
 
 	public int getTotalSeats() {

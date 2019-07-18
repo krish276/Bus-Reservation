@@ -1,7 +1,10 @@
 package com.lti;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -84,6 +87,58 @@ public class BusReservationApplicationTests {
 		
 		for(BusResultDTO brd:bss.busSearch("MUMBAI", "PUNE","2019-07-10"))
 			System.out.println(brd);
+	}
+	
+	@Test
+	public void addBusTest() {
+	
+		Date tempvar1 = null;
+		try {
+			tempvar1 = new SimpleDateFormat("yyyy-MM-dd").parse("2019-07-10");
+		} catch (ParseException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		String tempStartOfService =new SimpleDateFormat("dd-MMM-yy").format(tempvar1);
+		DateFormat sdf1 = new SimpleDateFormat("dd-MMM-yy");
+		java.util.Date date1 = null;
+		try {
+			date1 = sdf1.parse(tempStartOfService);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		java.sql.Date startOfService = new java.sql.Date(date1.getTime());
+		
+		
+		Date tempvar2 = null;
+		try {
+			tempvar2 = new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-10");
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String tempEndOfService =new SimpleDateFormat("dd-MMM-yy").format(tempvar2);
+		
+		DateFormat sdf2 = new SimpleDateFormat("dd-MMM-yy");
+		java.util.Date date2 = null;
+		try {
+			date2 = sdf2.parse(tempEndOfService);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		java.sql.Date endOfService = new java.sql.Date(date2.getTime());
+		TransportCompany transportCompany=tcdao.fetchByCompanyName("SRM");
+		
+		BusDetails bus=new BusDetails();
+		bus.setBusType("AC");
+		bus.setStartOfService(startOfService);
+		bus.setEndOfService(endOfService);
+		bus.setTotalSeats(45);
+		bus.setTransportCompany(transportCompany);
+		
+		dao.insertToDatabase(bus);
 	}
 	
 	

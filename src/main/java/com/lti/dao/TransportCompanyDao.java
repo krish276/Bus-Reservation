@@ -19,8 +19,8 @@ public class TransportCompanyDao {
 	@Autowired
 	private DaoInterface dao;
 	
-	public void insertNewTransportCompany(TransportCompany tc) {
-		dao.insertToDatabase(tc);
+	public TransportCompany insertNewTransportCompany(TransportCompany tc) {
+		return dao.insertToDatabase(tc);
 	}
 	
 	public List<TransportCompany> fetchDetailsOfAllTransport(){
