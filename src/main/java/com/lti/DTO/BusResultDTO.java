@@ -7,8 +7,8 @@ import com.lti.entity.TransportCompany;
 public class BusResultDTO {
 
 	private int tripId;
-	private  LocalTime departureTime;
-	private  LocalTime arrivalTime;
+	private  String departureTime;
+	private  String arrivalTime;
 	private int seatsFree;
 	private String busType;
 	private String transportCompanyName;
@@ -32,16 +32,16 @@ public class BusResultDTO {
 	public void setTripId(int tripId) {
 		this.tripId = tripId;
 	}
-	public LocalTime getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
-	public void setDepartureTime(LocalTime departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
-	public LocalTime getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
-	public void setArrivalTime(LocalTime arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 	public int getSeatsFree() {
