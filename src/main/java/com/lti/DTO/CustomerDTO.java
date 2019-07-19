@@ -3,6 +3,7 @@ package com.lti.DTO;
 import java.util.Date;
 
 import com.lti.entity.Customer;
+import com.lti.enums.Gender;
 
 public class CustomerDTO {
 
@@ -10,7 +11,7 @@ public class CustomerDTO {
 	private Integer customerId;
 	private String firstName;
 	private String lastName;
-	private String gender;
+	private Gender gender;
 	private Date dateOfBirth;
 		public CustomerDTO(Customer c) {
 			this.customerId = c.getCustomerId();
@@ -92,10 +93,10 @@ public class CustomerDTO {
 		public void setLastName(String lastName) {
 			this.lastName = lastName;
 		}
-		public String getGender() {
+		public Gender getGender() {
 			return gender;
 		}
-		public void setGender(String gender) {
+		public void setGender(Gender gender) {
 			this.gender = gender;
 		}
 		public Date getDateOfBirth() {

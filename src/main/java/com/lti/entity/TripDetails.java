@@ -4,13 +4,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,6 +46,17 @@ public class TripDetails {
 	
 	@Column(name="SEATS_FREE")
 	private int seatsFree;
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "tripID")
+	private List<SeatDetails> seatDetails;
+
+	public List<SeatDetails> getSeatDetails() {
+		return seatDetails;
+	}
+
+	public void setSeatDetails(List<SeatDetails> seatDetails) {
+		this.seatDetails = seatDetails;
+	}
 
 	public int getTripId() {
 		return tripId;

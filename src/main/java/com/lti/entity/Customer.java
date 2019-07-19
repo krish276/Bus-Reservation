@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.lti.enums.Gender;
+
 
 
 
@@ -25,7 +27,7 @@ public class Customer {
 	@Column(name="LAST_NAME")
 	private String lastName;
 	@Column(name="GENDER")
-	private String gender;
+	private Gender gender;
 	
 	@Transient
 	private String dob;
@@ -60,10 +62,10 @@ public class Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 	

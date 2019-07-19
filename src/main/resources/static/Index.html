@@ -19,7 +19,7 @@
 					var url = "/BusSearch?source=" + source + "&destination="
 							+ destination + "&journeyDate=" + journeyDate
 							+ "&noOfseats=" + noOfseats;
-
+					sessionStorage.setItem('noOfSeats',noOfseats);
 					$.ajax({
 						url : url, //the url we want to hit
 						method : 'GET',//get or post any other method of http

@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ import com.lti.dao.GenericDao;
 import com.lti.dao.TransportCompanyDao;
 import com.lti.entity.BusDetails;
 import com.lti.entity.RouteDetails;
+import com.lti.entity.SeatDetails;
 import com.lti.entity.TransportCompany;
 import com.lti.entity.TripDetails;
 import com.lti.entity.WeeklyFrequency;
@@ -139,6 +142,24 @@ public class BusReservationApplicationTests {
 		bus.setTransportCompany(transportCompany);
 		
 		dao.insertToDatabase(bus);
+	}
+	
+	
+	@Test
+
+	public void addSeats() {
+		
+		
+		//already entered
+		TripDetails tr= dao.fetchByIdfromDatabase(TripDetails.class, 101);
+		for(int i=1;i<=40;i++) {
+			SeatDetails seat = new SeatDetails();
+			seat.setSeatNo(i);
+			seat.setFree(true);
+			seat.setTripID(tr);
+			dao.insertToDatabase(seat);
+		}
+		
 	}
 	
 	
