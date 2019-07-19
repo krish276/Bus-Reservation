@@ -1,11 +1,14 @@
-html{
-background:url("bg_1.jpg");
--webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;
-}
 
+#contactus{
+text-align:center;
+display:inline;padding:15px
+}
+#ss{
+text-align: center;
+font-size: 150%;
+font-weight: bold;
+color:#F4A460
+}
 
 .topnav {
   background-color:#FFFAFA;
@@ -47,7 +50,8 @@ background-size:cover;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color:black;
+  width:100%;
+  background-color:#F4A460;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
@@ -60,20 +64,78 @@ background-size:cover;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
-
-
-
-.login{
-border-radius: 4px;
-background-color:white;
-position: relative;
-  z-index: 1;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+body
+{
+	background-image:  linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('bg_1.jpg');
+	background-size:cover;
+	background-position:center;
 }
+.booking-form-box
+{
+	/* max-width: 350px; */
+	width: 35%;
+	max-width: 500px;
+	border: 1px solid #ced4da;
+	margin: 10% auto 0;
+	padding: 20px;
+	border-radius: 1rem;
+}
+
+.booking-form
+{
+	/* padding: 0 20px 0px; */
+}
+.booking-form label
+{
+	margin-bottom:5px;
+	margin-top:10px;
+	font-size:12px;
+	color: #fff;
+
+}
+input::placeholder
+{
+	color: #fff ;
+}
+.input-grp
+{
+	/* width: 151px;
+	display: inline-block; */
+
+}
+.form-control
+{
+	font-size: 12px;
+	border-radius: 0;
+	color: #fff;
+	background: transparent;
+	box-shadow: none;
+}
+.input-grp-container {
+	display: flex;
+  justify-content: space-between;
+}
+
+.input-grp-container .input-grp {
+	flex: 1;
+  margin-left: 1rem;
+}
+
+.input-grp-container .input-grp:first-child {
+	margin-left: 0;
+}
+
+.input-submit {
+	margin-top: 1rem;
+}
+.message{
+color:white;
+}
+
+
+
+
+
+
 
 
