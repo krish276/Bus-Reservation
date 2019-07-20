@@ -20,6 +20,7 @@
 							+ destination + "&journeyDate=" + journeyDate
 							+ "&noOfseats=" + noOfseats;
 					sessionStorage.setItem('noOfSeats',noOfseats);
+					sessionStorage.setItem('journeyDate',journeyDate);
 					$.ajax({
 						url : url, //the url we want to hit
 						method : 'GET',//get or post any other method of http

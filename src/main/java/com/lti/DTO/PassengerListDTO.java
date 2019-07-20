@@ -1,9 +1,19 @@
 package com.lti.DTO;
 
+import java.sql.Date;
+
 public class PassengerListDTO {
 
 	private Passengers[] passengers;
 	private int tripID;
+	private String journeyDate;
+	
+	public String getJourneyDate() {
+		return journeyDate;
+	}
+	public void setJourneyDate(String journeyDate) {
+		this.journeyDate = journeyDate;
+	}
 	public Passengers[] getPassengers() {
 		return passengers;
 	}

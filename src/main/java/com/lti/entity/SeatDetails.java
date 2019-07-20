@@ -21,16 +21,16 @@ public class SeatDetails {
 	@Column(name="SEAT_ID")
 	private int seatID;
 	
-	@JoinColumn(name="TRIP_ID")
+	@JoinColumn(name="JOURNEY_ID")
 	@ManyToOne
-	private TripDetails tripID;
+	private BusTimeTable bus;
 	
 	@Column(name="SEAT_NO")
 	private int seatNo;
 	
 	@Column(name="IS_FREE")
 	private boolean isFree;
-	//private int 
+
 
 	public int getSeatID() {
 		return seatID;
@@ -40,12 +40,12 @@ public class SeatDetails {
 		this.seatID = seatID;
 	}
 
-	public TripDetails getTripID() {
-		return tripID;
+	public BusTimeTable getBus() {
+		return bus;
 	}
 
-	public void setTripID(TripDetails tripID) {
-		this.tripID = tripID;
+	public void setBus(BusTimeTable bus) {
+		this.bus = bus;
 	}
 
 	public int getSeatNo() {
@@ -63,7 +63,8 @@ public class SeatDetails {
 	public void setFree(boolean isFree) {
 		this.isFree = isFree;
 	}
-	
+
+
 	
 
 }

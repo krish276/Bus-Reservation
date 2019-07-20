@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -21,10 +22,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.lti.DTO.BusResultDTO;
 import com.lti.dao.BusSearchDao;
+import com.lti.dao.BusTimeTableDao;
 import com.lti.dao.DaoInterface;
 import com.lti.dao.GenericDao;
+import com.lti.dao.SeatDao;
 import com.lti.dao.TransportCompanyDao;
 import com.lti.entity.BusDetails;
+import com.lti.entity.BusTimeTable;
 import com.lti.entity.RouteDetails;
 import com.lti.entity.SeatDetails;
 import com.lti.entity.TransportCompany;
@@ -50,6 +54,8 @@ public class BusReservationApplicationTests {
 	 @Autowired
 	 private BusSearchService bss;
 	 
+	 @Autowired
+		BusTimeTableDao bdao;
 	@Test
 	public void addTranportCompanyTest() {
 	
@@ -71,19 +77,17 @@ public class BusReservationApplicationTests {
 			System.out.println(tcdao.fetchByCompanyName("SRM"));
 	}
 	
-	@Test
-	public void testtripdetailsInsert() {
-		TripDetails td=new TripDetails();
-		LocalTime time = LocalTime.of(23,43);
-		td.setArrivalTime(time);
-		td.setDepartureTime(LocalTime.of(05, 00));
-		
-		td.setBus(dao.fetchByIdfromDatabase(BusDetails.class,3));
-		td.setWeeklyFrequency(dao.fetchByIdfromDatabase(WeeklyFrequency.class,3));
-		td.setRoute(dao.fetchByIdfromDatabase(RouteDetails.class,2));
-		
-		dao.insertToDatabase(td);
-	}
+	/*
+	 * @Test public void testtripdetailsInsert() { TripDetails td=new TripDetails();
+	 * LocalTime time = LocalTime.of(23,43); td.setArrivalTime(time);
+	 * td.setDepartureTime(LocalTime.of(05, 00));
+	 * 
+	 * td.setBus(dao.fetchByIdfromDatabase(BusDetails.class,3));
+	 * td.setWeeklyFrequency(dao.fetchByIdfromDatabase(WeeklyFrequency.class,3));
+	 * td.setRoute(dao.fetchByIdfromDatabase(RouteDetails.class,2));
+	 * 
+	 * dao.insertToDatabase(td); }
+	 */
 	
 	@Test
 	public void searchTest() throws ParseException {
@@ -145,23 +149,48 @@ public class BusReservationApplicationTests {
 	}
 	
 	
+	
+	  @Test
+	  public void addSeats() {  
+	  //already entered 
+		  BusTimeTable bus=dao.fetchByIdfromDatabase(BusTimeTable.class,3); 
+	  for(int i=1;i<=40;i++) {
+	  SeatDetails seat = new SeatDetails(); 
+	  seat.setSeatNo(i);
+	  seat.setFree(true);
+	  seat.setBus(bus);
+	  dao.insertToDatabase(seat); }
+	  
+	  }
+	 
+	
+	
 	@Test
-
-	public void addSeats() {
-		
-		
-		//already entered
-		TripDetails tr= dao.fetchByIdfromDatabase(TripDetails.class, 101);
-		for(int i=1;i<=40;i++) {
-			SeatDetails seat = new SeatDetails();
-			seat.setSeatNo(i);
-			seat.setFree(true);
-			seat.setTripID(tr);
-			dao.insertToDatabase(seat);
+	public void BusTimetableSearch() {
+		Date tempvar;
+		try {
+			tempvar = new SimpleDateFormat("yyyy-MM-dd").parse("2019-07-10");
+			String travelDate =new SimpleDateFormat("dd-MMM-yy").format(tempvar);
+			System.out.println(travelDate);
+			bdao.findJourneyByDateandTripId(102,travelDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
 	
+	@Autowired
+	private SeatDao sdao;
+	
+	@Test
+	public void fetchingSeatsTest() {
+		
+		List<SeatDetails> list=sdao.fetchSeatsOfABus(5,3);
+		for(SeatDetails sdl:list)
+			System.out.println(sdl.getSeatNo());
+			
+	}
 	
 
 }

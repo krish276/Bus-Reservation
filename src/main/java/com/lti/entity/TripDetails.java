@@ -44,17 +44,19 @@ public class TripDetails {
 	@Column(name="SEATS_FREE")
 	private int seatsFree;
 	
-	@OneToMany(fetch = FetchType.EAGER,mappedBy = "tripID")
-	private List<SeatDetails> seatDetails;
-
-	public List<SeatDetails> getSeatDetails() {
-		return seatDetails;
+	@Column(name="FARE")
+	private double fare;
+	
+	public double getFare() {
+		return fare;
 	}
 
-	public void setSeatDetails(List<SeatDetails> seatDetails) {
-		this.seatDetails = seatDetails;
+	public void setFare(double fare) {
+		this.fare = fare;
 	}
 
+	@ManyToOne()
+	
 	public int getTripId() {
 		return tripId;
 	}

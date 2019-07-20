@@ -5,6 +5,23 @@
 <title>Reservation Page</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+function display(){
+	var response = JSON.parse(sessionStorage.getItem("BusList"));
+	$.each(response, function(i, Bus) {
+		if(Bus.tripId==sessionStorage.getItem("tripID")){
+			$("h1").append(" <b> Booking For "+Bus.transportCompanyName+"</b><br/>");
+			$("h2").append(" <b> Departure Time "+Bus.departureTime+"</b>.<br/>");
+			$("h2").append(" <b> Arrival Time "+Bus.arrivalTime+"</b>.<br/>"); 
+			$("h2").append(" <b> Duration "+Bus.duration+" Hrs</b>.<br/>");
+			$("h2").append(" <b> Bus Type  "+Bus.busType+"</b>.<br/>");
+			
+		}
+
+	})
+}
+
+</script>
+<script>
 $(function(){
 	var noOfPassengers = sessionStorage.getItem('noOfSeats');
 	
@@ -36,7 +53,8 @@ $(function(){
 		
 		var send={
 			passengers: passengers,
-			tripID : sessionStorage.getItem('tripID')
+			tripID : sessionStorage.getItem('tripID'),
+			journeyDate:sessionStorage.getItem('journeyDate')
 		}
 		
 		$.ajax({
@@ -56,7 +74,9 @@ $(function(){
 
 </script>
 </head>
-<body>
+<body onload="display()">
+<h1></h1>
+<h2></h2>
  <form id="frm"></form>
 </body>
 </html>
