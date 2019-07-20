@@ -1,9 +1,6 @@
 package com.lti.entity;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -39,10 +36,10 @@ public class TripDetails {
 	private WeeklyFrequency weeklyFrequency;
 	
 	@Column(name="DEPARTURE_TIME")
-	private  LocalTime departureTime;
+	private  String departureTime;
 	
 	@Column(name="ARRIVAL_TIME")
-	private  LocalTime arrivalTime;
+	private  String arrivalTime;
 	
 	@Column(name="SEATS_FREE")
 	private int seatsFree;
@@ -99,19 +96,19 @@ public class TripDetails {
 		this.weeklyFrequency = weeklyFrequency;
 	}
 
-	public LocalTime getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(LocalTime departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 
-	public LocalTime getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(LocalTime arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
