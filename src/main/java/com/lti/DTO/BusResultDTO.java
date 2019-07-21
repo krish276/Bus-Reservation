@@ -13,7 +13,15 @@ public class BusResultDTO {
 	private String busType;
 	private String transportCompanyName;
 	private int duration;
+	private double fare;
 	
+	
+	public double getFare() {
+		return fare;
+	}
+	public void setFare(double fare) {
+		this.fare = fare;
+	}
 	public int getDuration() {
 		return duration;
 	}

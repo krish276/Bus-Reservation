@@ -15,6 +15,7 @@
 		var column4 = $("<td/>").text(Bus.duration);
  		var column5 = $("<td/>").text(Bus.seatsFree);
  		var column6 = $("<td/>").text(Bus.busType);
+ 		var column7=$("<td/>").text(Bus.fare);
  		/* var r= $('<input type="button" id='+Bus.tripId+' value="Select Bus"/>') */
  		var button= $('<button  class="bus" value='+Bus.tripId+'>Select Bus</button>');
 		row.append(column1);
@@ -23,6 +24,7 @@
 		row.append(column4);
 		row.append(column5);
 		row.append(column6);
+		row.append(column7);
 		row.append(button);
 		$('#tbl').append(row);
 
@@ -38,7 +40,7 @@
 	$(".bus").click( function() {
 			/* $(".bus").val(); */
 			sessionStorage.setItem('tripID',$(this).val());
-			window.location = '/Reservation.html'
+			window.location = '/PassengerDetails.html'
 		});
 	
 	});

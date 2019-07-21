@@ -18,6 +18,7 @@ public class LoginService {
 	public CustomerDTO showSearch(LoginDTO loginDetail){
 		CustomerDTO cust = null;
 		Customer customer = loginDao.fetchEmail(loginDetail.getEmail());
+		System.out.println("fetched");
 		if(customer.getPassword().equals(loginDetail.getPassword())) {
 			 cust=new CustomerDTO(customer);
 		}

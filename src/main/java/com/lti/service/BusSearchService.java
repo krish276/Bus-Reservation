@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.lti.DTO.BusResultDTO;
 import com.lti.dao.BusSearchDao;
+import com.lti.dao.BusTimeTableDao;
+import com.lti.entity.BusTimeTable;
 import com.lti.entity.TripDetails;
 
 @Service
@@ -18,6 +20,9 @@ public class BusSearchService {
 
 	@Autowired
 	private BusSearchDao searchDao;
+	
+	@Autowired
+	private BusTimeTableDao timeDao;
 	
 	public List<BusResultDTO> busSearch(String source, String destination,String unformattedTravelDate) throws ParseException {
 		
@@ -35,10 +40,12 @@ public class BusSearchService {
 		
 		for(TripDetails td:busSearchResult) {
 			BusResultDTO resultDTO= new BusResultDTO();
+			BusTimeTable bus=timeDao.findJourneyByDateandTripId(td.getTripId(),travelDate);
+			resultDTO.setSeatsFree(bus.getSeatsFree());
+			resultDTO.setFare(td.getFare());
 			resultDTO.setTripId(td.getTripId());
 			resultDTO.setTransportCompanyName(td.getBus().getTransportComapny().getCompanyName());
 			resultDTO.setBusType(td.getBus().getBusType());
-			resultDTO.setSeatsFree(td.getSeatsFree());
 			resultDTO.setDepartureTime(td.getDepartureTime());
 			resultDTO.setArrivalTime(td.getArrivalTime());
 			resultDTO.setDuration(td.getRoute().getDuration());

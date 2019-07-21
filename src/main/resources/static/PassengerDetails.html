@@ -50,13 +50,12 @@ $(function(){
     		passengers[i] = passenger;
     		
     	}
+		sessionStorage.setItem('passengers',JSON.stringify(passengers))
+		alert(JSON.stringify(passengers));
+		window.location = '/ReviewBooking.html'
+	
 		
-		var send={
-			passengers: passengers,
-			tripID : sessionStorage.getItem('tripID'),
-			journeyDate:sessionStorage.getItem('journeyDate')
-		}
-		
+		/* 	AJAX
 		$.ajax({
 			url : '/ticketReservation',
 			method : 'POST', 
@@ -64,9 +63,10 @@ $(function(){
 			contentType :'application/json',
 			success : function(response) {
 				alert(JSON.stringify(response));
+				window.location = '/ReviewBooking.html'
 			}
-		})
-		alert(JSON.stringify(passengers));
+		}) */
+		
     })
 })
 

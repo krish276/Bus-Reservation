@@ -88,6 +88,12 @@ public class ReservationDetails {
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
+
+	@Override
+	public String toString() {
+		return "ReservationDetails [resrvID=" + resrvID + ", trip=" + trip + ", seats=" + seats + ", price=" + price
+				+ ", reservedOn=" + reservedOn + ", guest=" + guest + "]";
+	}
 	
 	
 	

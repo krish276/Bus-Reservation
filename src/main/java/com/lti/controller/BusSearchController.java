@@ -20,7 +20,7 @@ public class BusSearchController {
 	
 	@RequestMapping(value = "/BusSearch", method = RequestMethod.GET)
 	public List<BusResultDTO> search(@RequestParam(name="source") String source,@RequestParam(name="destination") String destination, @RequestParam(name="journeyDate") String journeyDate ,@RequestParam(name="noOfseats") int noOfseats)  {
-		System.out.println(source);
+		System.out.println(journeyDate);
 		try {
 			return bss.busSearch(source, destination, journeyDate);
 		} catch (ParseException e) {

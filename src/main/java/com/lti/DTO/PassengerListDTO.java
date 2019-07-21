@@ -1,13 +1,20 @@
 package com.lti.DTO;
 
-import java.sql.Date;
 
 public class PassengerListDTO {
 
 	private Passengers[] passengers;
 	private int tripID;
 	private String journeyDate;
+	private Integer customerId;
 	
+	
+	public Integer getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
 	public String getJourneyDate() {
 		return journeyDate;
 	}

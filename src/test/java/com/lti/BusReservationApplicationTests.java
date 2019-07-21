@@ -171,13 +171,12 @@ public class BusReservationApplicationTests {
 		try {
 			tempvar = new SimpleDateFormat("yyyy-MM-dd").parse("2019-07-10");
 			String travelDate =new SimpleDateFormat("dd-MMM-yy").format(tempvar);
-			System.out.println(travelDate);
-			bdao.findJourneyByDateandTripId(102,travelDate);
+			System.out.println("Test Traveldate:"+travelDate);
+			BusTimeTable bus=bdao.findJourneyByDateandTripId(101,travelDate);
+			System.out.println(bus.getJourneyID());
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	@Autowired
