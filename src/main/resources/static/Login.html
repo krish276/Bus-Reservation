@@ -37,6 +37,12 @@
 				}
 			})
 		})
+          $("#cancel").click(function(evt) {
+          evt.preventDefault();
+          window.location.replace("Index.html");
+
+})
+
 	})
 </script>
 </head>
@@ -50,8 +56,10 @@
 			</nav>
 		</div>
 		<nav>
-			<a href="Index.html">Home</a> <a href="Login.html">Sign In</a> <a
-				href="UserRegistration.html">Sign Up</a> <a href="">About Us</a>
+			        <a href="Index.html">Home</a> 
+                              <a href="Login.html">Sign In</a> 
+				<a href="UserRegistration.html">Sign Up</a> 
+                               <a href="">About Us</a>
 		</nav>
 	</div>
 
@@ -66,7 +74,10 @@
 			<div class="input-grp input-submit">
 					<button type="submit" class="button">
 						<span>LOGIN</span>
-					</button>
+					</button><br/><br/>
+					<button type="button" id="cancel" class="button">
+						<span>CANCEL</span>
+					</button><br/>
 					</div><br/>
 			<p class="message">
 				Not registered? <a href="Newregisterhtml.html">Create an account</a>
