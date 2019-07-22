@@ -34,6 +34,18 @@ $.ajax({
    })
 }
 }
+    
+    $(function() {
+		$("#cancel").click(function(evt) {
+			
+			evt.preventDefault();
+	          window.location.replace("Index.html");
+
+	})
+
+		})
+    
+    
 
 </script>
 
@@ -110,6 +122,9 @@ $.ajax({
       </div> 
 <div class="input-grp input-submit"> 
       <input class="button" type="submit" id="btnSubmit" value="Submit" onclick="return Validate()" /><br><br>
+      <button type="button" id="cancel" class="button">
+						<span>CANCEL</span>
+					</button><br/><br/>
       <p class="message">Already registered? <a href="Newlogin.html">Sign In</a></p>
 </div>
     </form>
